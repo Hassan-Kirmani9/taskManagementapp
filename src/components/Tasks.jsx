@@ -1,16 +1,24 @@
 import React, { useRef } from 'react'
 import { Input } from './Input'
+import { Modal } from './Modal'
 
 export const Tasks = ({onAdd}) => {
 
     const title = useRef()
     const description = useRef()
     const dueDate = useRef()
+    const modal = useRef()
     
     const handleSave=()=>{
         const enteredTitle = title.current.value
         const enteredDescription = description.current.value
         const enteredDate = dueDate.current.value
+        
+        if(enteredDate.trim()==="" || enteredTitle.trim()==="" || enteredDescription.trim()===""){
+            modal.current.open()
+            return;
+           }
+
         onAdd({
         title: enteredTitle, 
         description: enteredDescription, 
@@ -22,6 +30,11 @@ export const Tasks = ({onAdd}) => {
 
     return (
     <>
+    <div>
+        <Modal className='bg-amber-700' ref={modal} buttonCaption="Close">
+        <h3>Invali Input !</h3>
+        </Modal>
+    </div>
     <div className="border-2 border-orange-400">
     <div>Tasks</div>
     <menu className='flex gap-4'>
