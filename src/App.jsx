@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Sidebar } from "./components/Sidebar";
 import { Tasks } from "./components/Tasks";
 import { NoTask } from "./components/NoTask";
+import { SelectedTask } from "./components/SelectedTask";
 
 function App() {
 
@@ -16,6 +17,25 @@ function App() {
     return {...prevState,  selectedTasksId: null}
    })
   }
+  
+  const handleDeleteTask =()=>{
+    setTaskselected(prevState=>{
+      return {...prevState,  selectedTasksId: undefined, tasks: prevState.tasks.filter((task)=> task.id !== prevState.selectedTasksId)}
+     })
+     
+  } 
+ const handleSelectTasks=(id)=>{
+    
+   setTaskselected(prevState=>{
+    return {...prevState,  selectedTasksId: id}
+   })
+  }
+ const handleCancelTask=()=>{
+    
+   setTaskselected(prevState=>{
+    return {...prevState,  selectedTasksId: undefined}
+   })
+  }
  const handleAddTasks_action=(projectData)=>{
   const task_id = Math.random()
   const newProject = {
@@ -28,12 +48,14 @@ function App() {
     }
    })
   }
+
   
   console.log(taskselected)
 
-  let content;
+const selectedTask = taskselected.tasks.find((project)=>{return project.id === taskselected.selectedTasksId})
+  let content= <SelectedTask task={selectedTask} onDel={handleDeleteTask}/>;
  if(taskselected.selectedTasksId===null){
-  content= <Tasks onAdd={handleAddTasks_action}/>;
+  content= <Tasks onAdd={handleAddTasks_action} onCancel={handleCancelTask}/>;
  }
  else if(taskselected.selectedTasksId=== undefined){
   content= <NoTask onAddTask={handleAddTasks}/>
@@ -42,7 +64,7 @@ function App() {
     <>
     <div className="flex h-scree my-6 gap-9">
 
-      <Sidebar onAddTask={handleAddTasks} totalTasks={taskselected.tasks}/>
+      <Sidebar  onAddTask={handleAddTasks} totalTasks={taskselected.tasks}  onSelectTask={handleSelectTasks}/>
     {content}
        </div>
       

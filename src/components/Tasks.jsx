@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import { Input } from './Input'
 import { Modal } from './Modal'
 
-export const Tasks = ({onAdd}) => {
+export const Tasks = ({onAdd , onCancel}) => {
 
     const title = useRef()
     const description = useRef()
@@ -38,7 +38,7 @@ export const Tasks = ({onAdd}) => {
     <div className="border-2 border-orange-400">
     <div>Tasks</div>
     <menu className='flex gap-4'>
-     <li><button>Cancel</button></li>
+     <li><button onClick={onCancel}>Cancel</button></li>
      <li><button onClick={handleSave}>Save</button></li>
     </menu>
     <div className='border-2 border-blue-300'>

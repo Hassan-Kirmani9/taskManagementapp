@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Sidebar = ({onAddTask, totalTasks}) => {
+export const Sidebar = ({onAddTask, totalTasks, onSelectTask}) => {
     const setlect=()=>{
         
     }
@@ -11,8 +11,10 @@ export const Sidebar = ({onAddTask, totalTasks}) => {
     <button className='bg-gray-400' onClick={onAddTask}>Add Task</button>
  </div>
  <ul>
-      {totalTasks.map(task=> <li key={task.id}><button>{task.title}</button></li>)}
+      {totalTasks.map((task)=>{ return <li key={task.id}><button className='bg-slate-800' onClick={()=>onSelectTask(task.id)}>{task.title}</button></li>})}
  </ul>
+
+ 
         </div>
   )
 }

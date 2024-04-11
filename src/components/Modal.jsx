@@ -14,7 +14,7 @@ useImperativeHandle(ref,()=>{
 
 
 return createPortal( 
-    <dialog ref={dialog}>{children} <form action="dialog">{buttonCaption}</form></dialog>, document.getElementById("modal-root")
+    <dialog ref={dialog}>{children} <form action="dialog"><button>{buttonCaption}</button></form></dialog>, document.getElementById("modal-root")
   )
 }
 )
