@@ -32,21 +32,38 @@ export const Tasks = ({onAdd , onCancel}) => {
     <>
     <div>
         <Modal className='bg-amber-700' ref={modal} buttonCaption="Close">
-        <h3>Invali Input !</h3>
+        <h3>Invalid Input !</h3>
         </Modal>
     </div>
-    <div className="border-2 border-orange-400">
-    <div>Tasks</div>
-    <menu className='flex gap-4'>
-     <li><button onClick={onCancel}>Cancel</button></li>
-     <li><button onClick={handleSave}>Save</button></li>
-    </menu>
-    <div className='border-2 border-blue-300'>
-   <Input ref={title} label="Title" className="bg-slate-400" />
-   <Input ref={description} label="Description" textArea className="bg-slate-400" />
-   <Input  type="date" ref={dueDate} label="Due Date" className="bg-slate-400" />
+    <div className="w-[35rem] mt-16">
+    <h2 className="mb-8 font-bold uppercase md:text-xl text-stone-200">
+                New Project
+            </h2>
+        <menu className="flex items-center justify-end gap-4 my-4">
+          <li>
+            <button
+              className="text-white px-6 py-2 rounded-md bg-red-600 hover:bg-red-500"
+              onClick={onCancel}
+            >
+              Cancel
+            </button>
+          </li>
+          <li>
+            <button
+              className="px-6 py-2 rounded-md bg-custom-green text-white hover:bg-green-500"
+              onClick={handleSave}
+            >
+              Save
+            </button>
+          </li>
+        </menu>
+    <div>
+   <Input ref={title} label="Title" />
+   <Input ref={description} label="Description" textArea />
+   <Input  type="date" ref={dueDate} label="Due Date" />
      </div>
      </div>
+     
     </>
   )
 }

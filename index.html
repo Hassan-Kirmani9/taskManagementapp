@@ -5,8 +5,19 @@
     <link rel="icon" type="image/svg+xml" href="/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>React Project Manager</title>
+    <style>
+      /* CSS Reset for margin and padding */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box; /* Helps manage padding and borders inside of box dimensions */
+      }
+      body {
+        background-color: #424242; /* Assuming you have defined custom-gray in your Tailwind config */
+      }
+    </style>
   </head>
-  <body class="bg-stone-50">
+  <body class="bg-custom-gray">
     <div id="modal-root"></div>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>

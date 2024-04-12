@@ -104,7 +104,7 @@ let content= <SelectedTask task={selectedTask} onDel={handleDeleteTask} onDelNew
 }
   return (
     <>
-    <div className="flex h-scree my-6 gap-9">
+    <div className="flex h-scree my-6 gap-9 bg-custom-gray ">
 
       <Sidebar taskSelected={taskselected.selectedTasksId} onAddTask={handleAddTasks} totalTasks={taskselected.tasks}  onSelectTask={handleSelectTasks}/>
     {content}
